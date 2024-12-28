@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: ${SPRING_SECURITY_APP:"Employee App"}
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+  liquibase:
+    default-schema: employee_security
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: employee_security
+#  security:
+#    user:
+#      name: test
+#      password: test
+
+logging:
+  pattern:
+    console: ${LOG_PATTERN_CONSOLE:%green(%d{dd-MMM-yyyy HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n}
+  level:
+    com:
+      example:
+        employee: TRACE
